@@ -1,6 +1,8 @@
 Official website : https://www.php.net/  
   
 # Usage :
+    version: "3.7"
+    services:
       php:
         image: mihokookayami/php-fpm:latest
         container_name: php
