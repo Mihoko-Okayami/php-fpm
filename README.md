@@ -11,7 +11,6 @@ Official website : https://www.php.net/
           - /my/php-fpm.d/path:/etc/php8/php-fpm.d:ro
         restart: unless-stopped
   
-# Requires :  
-( /my/php-fpm.d/path/www.conf )  
+# Requires : ( /my/php-fpm.d/path/www.conf )
     [global]
     daemonize = no
