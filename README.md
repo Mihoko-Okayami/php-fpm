@@ -8,5 +8,5 @@ Official website : https://www.php.net/
         container_name: php
         volumes:
           - /my/conf.d/path/exemple.ini:/etc/php8/conf.d/exemple.ini:ro
-          - /my/php-fpm.d/path/www.conf:/etc/php8/php-fpm.d/www.conf:ro
+          - /my/php-fpm.d/path:/etc/php8/php-fpm.d:ro
         restart: unless-stopped
