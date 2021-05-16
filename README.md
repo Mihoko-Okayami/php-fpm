@@ -10,3 +10,7 @@ Official website : https://www.php.net/
           - /my/conf.d/path/exemple.ini:/etc/php8/conf.d/exemple.ini:ro
           - /my/php-fpm.d/path:/etc/php8/php-fpm.d:ro
         restart: unless-stopped
+  
+# Requires : ( /my/php-fpm.d/path/www.conf )
+    [global]
+    daemonize = no
