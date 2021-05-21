@@ -1,9 +1,16 @@
-FROM alpine:latest
+FROM php:7-fpm-alpine
 
-LABEL maintainer="Mihoko-Okayami (https://hub.docker.com/r/mihokookayami/php-fpm/)"
+MAINTAINER Mihoko-Okayami <https://hub.docker.com/r/mihokookayami/php-fpm/>
 
-RUN apk add --no-cache php8-brotli php8-bz2 php8-calendar php8-cgi php8-ctype php8-curl php8-exif php8-fpm php8-ftp php8-gd php8-gettext php8-iconv php8-intl php8-mbstring php8-mysqli php8-opcache php8-openssl php8-pecl-imagick php8-pecl-memcached php8-pecl-oauth php8-pecl-redis php8-pecl-uploadprogress php8-phar php8-session php8-simplexml php8-sockets php8-sqlite3 php8-tidy php8-tokenizer php8-xml php8-xmlreader php8-xmlwriter php8-zip
+RUN set -eux; \
+	docker-php-source extract; \
+	apk add --no-cache --virtual .build-dependencies $PHPIZE_DEPS bzip2-dev freetype-dev imagemagick-dev libjpeg-turbo-dev libpng-dev libwebp-dev libxpm-dev libzip-dev tidyhtml-dev; \
+	docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp --with-xpm; \
+	docker-php-ext-install -j "$(nproc)" bz2 exif gd mysqli opcache tidy zip; \
+	pecl install imagick redis; \
+	docker-php-ext-enable imagick redis; \
+	docker-php-source delete; \
+	apk del .build-dependencies; \
+	rm -rf /tmp/* /var/cache/apk/*
 
-COPY opcache-recommended.ini /etc/php8/conf.d/
-
-CMD php-fpm8
+COPY opcache-recommended.ini /usr/local/etc/php/conf.d/
