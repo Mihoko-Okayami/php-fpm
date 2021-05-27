@@ -15,5 +15,3 @@ RUN set -eux; \
 	docker-php-source delete; \
 	apk del .build-dependencies; \
 	rm -rf /tmp/* /var/cache/apk/*
-
-COPY opcache-recommended.ini /usr/local/etc/php/conf.d/
