@@ -7,8 +7,8 @@ Official website : https://www.php.net/
         image: mihokookayami/php-fpm:latest
         container_name: php
         volumes:
-          - /my/conf.d/path/exemple.ini:/usr/local/etc/php/conf.d/exemple.ini:ro
-          - /my/php-fpm.d/path:/usr/local/etc/php-fpm.d:ro
+          - /my/conf.d/path/exemple.ini:/etc/php7/conf.d/exemple.ini:ro
+          - /my/php-fpm.d/path:/etc/php7/php-fpm.d:ro
           - /my/sock/path:/run/php-fpm
         restart: unless-stopped
   
