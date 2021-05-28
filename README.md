@@ -9,6 +9,7 @@ Official website : https://www.php.net/
         volumes:
           - /my/conf.d/path/exemple.ini:/usr/local/etc/php/conf.d/exemple.ini:ro
           - /my/php-fpm.d/path:/usr/local/etc/php-fpm.d:ro
+          - /my/sock/path:/run/php-fpm
         restart: unless-stopped
   
 # Requires :  
@@ -22,6 +23,18 @@ Official website : https://www.php.net/
 ( /my/php-fpm.d/path/**www.conf** )  
 
     [www]
+    user = www-data
+    group = www-data
+    listen = /run/php-fpm/www.sock
+    listen.owner = nginx
+    listen.group = nginx
+    listen.mode = 0660
     ; ... your configuration here ... 
     catch_workers_output = yes
     decorate_workers_output = no
+  
+Host user :
+  
+    addgroup -g 82 -S www-data
+    adduser -u 82 -D -S -H -h /my/data/path -s /sbin/nologin -G www-data www-data
+  
