@@ -3,7 +3,7 @@ FROM alpine:latest
 LABEL maintainer="Mihoko-Okayami (https://hub.docker.com/r/mihokookayami/php-fpm/)"
 
 RUN set -eux; \
-	apk add --no-cache imagemagick php7-bcmath php7-brotli php7-bz2 php7-calendar php7-cgi php7-common php7-ctype php7-curl php7-dom php7-exif php7-fileinfo php7-fpm php7-ftp php7-gd php7-gettext php7-iconv php7-intl php7-mbstring php7-mysqli php7-mysqlnd php7-opcache php7-openssl php7-pdo php7-pdo_mysql php7-pdo_pgsql php7-pdo_sqlite php7-pecl-imagick php7-pecl-maxminddb php7-pecl-oauth php7-pecl-redis php7-pecl-timezonedb php7-pecl-uploadprogress php7-phar php7-session php7-simplexml php7-sockets php7-sodium php7-sqlite3 php7-tidy php7-tokenizer php7-xml php7-xmlreader php7-xmlwriter php7-zip; \
+	apk add --no-cache imagemagick php8-bcmath php8-brotli php8-bz2 php8-calendar php8-cgi php8-common php8-ctype php8-curl php8-dom php8-exif php8-fileinfo php8-fpm php8-ftp php8-gd php8-gettext php8-iconv php8-intl php8-mbstring php8-mysqli php8-mysqlnd php8-opcache php8-openssl php8-pdo php8-pdo_mysql php8-pdo_pgsql php8-pdo_sqlite php8-pecl-imagick php8-pecl-maxminddb php8-pecl-oauth php8-pecl-redis php8-pecl-timezonedb php8-pecl-uploadprogress php8-phar php8-session php8-simplexml php8-sockets php8-sodium php8-sqlite3 php8-tidy php8-tokenizer php8-xml php8-xmlreader php8-xmlwriter php8-zip; \
 	addgroup -g 82 -S www-data && adduser -u 82 -D -S -H -h /var/www -s /sbin/nologin -G www-data www-data; \
 	addgroup -g 101 -S nginx && adduser -u 101 -D -S -H -h /var/www -s /sbin/nologin -G nginx nginx; \
 	rm -rf /tmp/* /var/cache/apk/*
