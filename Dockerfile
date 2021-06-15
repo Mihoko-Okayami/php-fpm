@@ -8,4 +8,4 @@ RUN set -eux; \
 	addgroup -g 101 -S nginx && adduser -u 101 -D -S -H -h /var/www -s /sbin/nologin -G nginx nginx; \
 	rm -rf /tmp/* /var/cache/apk/*
 
-CMD php-fpm7
+CMD php-fpm8
